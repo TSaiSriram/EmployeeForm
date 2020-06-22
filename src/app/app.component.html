@@ -1,0 +1,101 @@
+<body
+  >
+ 
+  <form [formGroup]="contactForm">
+    <div style="text-align: left">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="lname">LastName:</label>
+        <div class="col-sm-9">
+          <input type="text" required class="invalid-feedback" class="form-control" maxlength="40"
+            placeholder="Enter Last Name" formControlName="lastName">
+        </div>
+        <span class="validationtest"
+          *ngIf="this.contactForm.get('lastName').touched && this.contactForm.get('lastName').errors?.required">
+          <small class="text-danger"> Please Enter Last Name </small>
+        </span>
+        <span class="validationtest"
+          *ngIf="this.contactForm.get('lastName').invalid && this.contactForm.get('lastName').errors?.pattern">
+          <small class="text-danger"> Please Enter Alphabets Only</small>
+        </span>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="fname">FirstName:</label>
+        <div class="col-sm-9">
+          <input type="text" required class="invalid-feedback" class="form-control" maxlength="40"
+            formControlName="firstName" placeholder="Enter First Name">
+        </div>
+        <span class="validationtest"
+          *ngIf="this.contactForm.get('firstName').touched && this.contactForm.get('firstName').errors?.required">
+          <small class="text-danger"> Please Enter First Name </small>
+        </span>
+        <span class="validationtest"
+          *ngIf="this.contactForm.get('firstName').invalid && this.contactForm.get('firstName').errors.pattern">
+          <small class="text-danger"> Please Enter Alphabets Only </small>
+        </span>
+
+      </div>
+      <div class="row" >
+        <div class="form-group">
+          <div class="col-sm-10">
+            <label class="control-label" for="department">Department:</label>
+
+                 <input type="text" required class="invalid-feedback" class="form-control" 
+              placeholder="Enter Department" formControlName="department">
+          </div>
+          <span class="validationtest"
+            *ngIf="this.contactForm.get('department').touched && this.contactForm.get('department').errors?.required">
+            <small class="text-danger"> Please Enter Department </small>
+          </span>
+          <span class="validationtest"
+            *ngIf="this.contactForm.get('department').invalid && this.contactForm.get('department').errors?.pattern">
+            <small class="text-danger"> Please Enter Alphabets Only</small>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-10">
+            <label class="control-label"  for="phone">PhoneNumber:</label>
+            <div >
+              <input type="tel" required class="form-control" id="phone" formControlName="phone"
+                placeholder="Enter Number" maxlength="12"
+                [ngClass]="{'is-invalid':contactForm.get('phone').touched && contactForm.get('phone').invalid}">
+              <div *ngIf="contactForm.get('phone').touched && contactForm.get('phone').invalid"
+                class="invalid-feedback">
+                <span class="validationtest" *ngIf="this.contactForm.get('phone').errors?.required"><small
+                    class="text-danger"> Please Enter Phone Number of 12 digits</small> </span>
+                <span class="validationtest" *ngIf="this.contactForm.get('phone').errors?.pattern"><small
+                    class="text-danger"> Please Enter Numerics Only</small> </span>
+              </div>
+            </div>
+          </div>
+        </div> </div>
+        <div class="col-sm-9">
+        
+          <label class="control-label" for="email">Email:</label>
+          <div class="form-group">
+            <input type="text" required class="invalid-feedback" class="form-control" maxlength=60
+              placeholder="Enter Email" formControlName="emailAddress">
+          </div>
+          <span class="validationtest"
+            *ngIf="this.contactForm.get('emailAddress').touched && this.contactForm.get('emailAddress').errors?.required">
+            <small class="text-danger"> Please Enter emailAddress </small>
+          </span>
+          <span class="validationtest"
+            *ngIf="this.contactForm.get('emailAddress').invalid && this.contactForm.get('emailAddress').errors?.pattern">
+            <small class="text-danger"> Please Enter correct emailAddress format</small>
+          </span>
+        </div>
+    
+        <div style="text-align: right;"></div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-dark" (click)="onSubmit()">Submit</button>
+  &nbsp;            <button type="submit" class="btn btn-dark"  (click)="onReset()">Reset</button> 
+  
+          </div></div>
+          
+       
+      
+  </form>
+</body>
