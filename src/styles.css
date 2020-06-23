@@ -1,9 +1,0 @@
-.algin_center{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-body{
-font-size: 1rem;
-}

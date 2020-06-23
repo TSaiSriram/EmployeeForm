@@ -16,31 +16,21 @@ export class SubmitDocsComponent implements OnInit {
     this.contactForm = this.fb.group({
       lastName: ['', [Validators.required, Validators.pattern('^[a-zA-z\\s]*$')]],
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-z\\s]*$')]],
-      middleName: ['', [Validators.required, Validators.pattern('^[a-zA-z\\s]*$')]],
+      middleName: ['', [Validators.pattern('^[a-zA-z\\s]*$')]],
+      gender: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10)]],
       emailAddress: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[com]{2,4}$')]],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10)]]
+      matrialStatus: ['', [Validators.required]],
+      date: ['', [Validators.required]]
     });
   }
-
+  currentDate = new Date();
   onReset() {
     this.contactForm.reset();
   }
   onSubmit() {
-    const data = {
-      lastname: this.contactForm.get('lastName').value,
-      firstname: this.contactForm.get('firstName').value,
-      department: this.contactForm.get('department').value,
-      emailAddress: this.contactForm.get('emailAddress').value,
-      phone: this.contactForm.get('phone').value,
-    }
-    this.http.post('http://172.17.13.99:8081/email/sendmail', data).subscribe((res: any) => {
-      this.contactData = res;
-      console.log('response', res);
-      console.log('response 2', this.contactData);
-    });
-    console.log(this.contactForm.value);
-    alert('submitted \n\n' + JSON.stringify(this.contactForm.value))
-
+    console.log("this is called")
+    console.log(this.contactForm.value)
   }
 
 }

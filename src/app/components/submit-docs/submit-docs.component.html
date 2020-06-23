@@ -1,106 +1,114 @@
-<form [formGroup]="contactForm" class="align_center">
-  <div>
+<form clrForm [formGroup]="contactForm" class="form_align" (ngSubmit)="onSubmit()">
+  <div class="col">
 
     <div class="form-group">
-      <label class="control-label col-sm-2" for="fname">First name:</label>
-      <div class="col-sm-6">
-        <input type="text" required class="invalid-feedback" class="form-control" maxlength="40"
-          formControlName="firstName" placeholder="Enter First Name">
+      <div class="col-md-12">
+        <clr-input-container>
+          <label for="fname">First name:</label>
+          <input type="text" clrInput placeholder="Enter First name" formControlName="firstName">
+          <clr-control-error
+            *clrIfError="(contactForm.get('firstName').touched) && contactForm.get('firstName').errors?.pattern">
+            This field is required!</clr-control-error>
+        </clr-input-container>
       </div>
-      <span class="validationtest"
-        *ngIf="this.contactForm.get('firstName').touched && this.contactForm.get('firstName').errors?.required">
-        <small class="text-danger"> Please Enter First Name </small>
-      </span>
-      <span class="validationtest"
-        *ngIf="this.contactForm.get('firstName').invalid && this.contactForm.get('firstName').errors.pattern">
-        <small class="text-danger"> Please Enter Alphabets Only </small>
-      </span>
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-2" for="mname">Middle name:</label>
-      <div class="col-sm-6">
-        <input type="text" required class="invalid-feedback" class="form-control" maxlength="40"
-          placeholder="Enter Middle name" formControlName="middleName">
+      <div class="col-md-12">
+        <clr-input-container>
+          <label for="mname">Middle name:</label>
+          <input type="text" clrInput placeholder="Enter Middle name" formControlName="middleName">
+          <clr-control-error
+            *clrIfError="(contactForm.get('middleName').invalid) && contactForm.get('middleName').errors?.pattern">
+            This field is required!</clr-control-error>
+        </clr-input-container>
       </div>
-      <span class="validationtest"
-        *ngIf="this.contactForm.get('middleName').touched && this.contactForm.get('middleName').errors?.required">
-        <small class="text-danger"> Please Enter Middle Name </small>
-      </span>
-      <span class="validationtest"
-        *ngIf="this.contactForm.get('middleName').invalid && this.contactForm.get('middleName').errors?.pattern">
-        <small class="text-danger"> Please Enter Alphabets Only</small>
-      </span>
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-2" for="lname">Last name:</label>
-      <div class="col-sm-6">
-        <input type="text" required class="invalid-feedback" class="form-control" maxlength="40"
-          placeholder="Enter Last name" formControlName="lastName">
+      <div class="col-md-12">
+        <clr-input-container>
+          <label for="lname">Last name:</label>
+          <input type="text" clrInput placeholder="Enter Last name" formControlName="lastName">
+          <clr-control-error
+            *clrIfError="(contactForm.get('lastName').invalid) && contactForm.get('lastName').errors?.pattern">
+            This field is required!</clr-control-error>
+        </clr-input-container>
       </div>
-      <span class="validationtest"
-        *ngIf="this.contactForm.get('lastName').touched && this.contactForm.get('lastName').errors?.required">
-        <small class="text-danger"> Please Enter Last Name </small>
-      </span>
-      <span class="validationtest"
-        *ngIf="this.contactForm.get('lastName').invalid && this.contactForm.get('lastName').errors?.pattern">
-        <small class="text-danger"> Please Enter Alphabets Only</small>
-      </span>
     </div>
 
-    <div>
-      <clr-radio-container clrInline>
-        <label>Inline radio example</label>
-        <clr-radio-wrapper>
-          <input type="radio" clrRadio name="options" required value="option1" [(ngModel)]="options" />
-          <label>Option 1</label>
-        </clr-radio-wrapper>
-        <clr-radio-wrapper>
-          <input type="radio" clrRadio name="options" required value="option2" [(ngModel)]="options" />
-          <label>Option 2</label>
-        </clr-radio-wrapper>
-        <clr-control-helper>Helper text</clr-control-helper>
-        <clr-control-error>This field is required!</clr-control-error>
-      </clr-radio-container>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-radio-container clrInline>
+          <label>Gender:</label>
+          <clr-radio-wrapper>
+            <input type="radio" clrRadio name="gender" value="Male" formControlName="gender" />
+            <label>Male</label>
+          </clr-radio-wrapper>
+          <clr-radio-wrapper>
+            <input type="radio" clrRadio name="gender" value="Female" formControlName="gender" />
+            <label>Female</label>
+          </clr-radio-wrapper>
+          <clr-control-error>This field is required!</clr-control-error>
+        </clr-radio-container>
+      </div>
     </div>
 
     <div class="form-group">
-      <div class="col-sm-6">
-        <label class="control-label" for="phone">Phone number:</label>
-        <div>
-          <input type="tel" required class="form-control" id="phone" formControlName="phone" placeholder="Enter Number"
-            maxlength="12"
-            [ngClass]="{'is-invalid':contactForm.get('phone').touched && contactForm.get('phone').invalid}">
-          <div *ngIf="contactForm.get('phone').touched && contactForm.get('phone').invalid" class="invalid-feedback">
-            <span class="validationtest" *ngIf="this.contactForm.get('phone').errors?.required"><small
-                class="text-danger"> Please Enter Phone Number of 10 digits</small> </span>
-            <span class="validationtest" *ngIf="this.contactForm.get('phone').errors?.pattern"><small
-                class="text-danger"> Please Enter Numerics Only</small> </span>
-          </div>
-        </div>
+      <div class="col-md-12">
+        <clr-input-container>
+          <label for="phone">Phone number:</label>
+          <input type="tel" clrInput placeholder="Enter Number" formControlName="phone">
+          <clr-control-error
+            *clrIfError="(contactForm.get('phone').invalid) && contactForm.get('phone').errors?.pattern">
+            This field is required!</clr-control-error>
+        </clr-input-container>
       </div>
-    </div>
-    <div class="col-sm-6">
-      <label class="control-label" for="email">Email:</label>
-      <div class="form-group">
-        <input type="text" required class="invalid-feedback" class="form-control" maxlength=60 placeholder="Enter Email"
-          formControlName="emailAddress">
-      </div>
-      <span class="validationtest"
-        *ngIf="this.contactForm.get('emailAddress').touched && this.contactForm.get('emailAddress').errors?.required">
-        <small class="text-danger"> Please Enter emailAddress </small>
-      </span>
-      <span class="validationtest"
-        *ngIf="this.contactForm.get('emailAddress').invalid && this.contactForm.get('emailAddress').errors?.pattern">
-        <small class="text-danger"> Please Enter correct emailAddress format</small>
-      </span>
     </div>
 
-    <div style="text-align: right;"></div>
     <div class="form-group">
-      <button type="submit" class="btn btn-dark" (click)="onSubmit()">Submit</button>
-      &nbsp; <button type="submit" class="btn btn-dark" (click)="onReset()">Reset</button>
+      <div class="col-md-12">
+        <clr-input-container>
+          <label class="control-label" for="email">Email:</label>
+          <input type="text" clrInput placeholder="Enter Email" formControlName="emailAddress">
+          <clr-control-error
+            *clrIfError="(contactForm.get('emailAddress').invalid) && contactForm.get('emailAddress').errors?.pattern">
+            Please Enter emailAddress</clr-control-error>
+        </clr-input-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-radio-container clrInline>
+          <label>Matirial Status:</label>
+          <clr-radio-wrapper>
+            <input type="radio" clrRadio value="Single" formControlName="matrialStatus" />
+            <label>Single</label>
+          </clr-radio-wrapper>
+          <clr-radio-wrapper>
+            <input type="radio" clrRadio value="Married" formControlName="matrialStatus" />
+            <label>Married</label>
+          </clr-radio-wrapper>
+          <clr-control-error>This field is required!</clr-control-error>
+        </clr-radio-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-date-container>
+          <label>Date</label>
+          <input type="date" clrDate formControlName="date" />
+        </clr-date-container>
+      </div>
+    </div>
+
+    <div style="float: left;margin-left: 1em;">
+      <button type="submit" class="btn btn-dark" [disabled]="contactForm.invalid">Submit</button>
+      &nbsp; <button type="submit" class="btn btn-dark" (click)="onReset()"
+        [disabled]="!contactForm.dirty">Reset</button>
     </div>
   </div>
 </form>
