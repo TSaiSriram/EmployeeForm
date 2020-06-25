@@ -1,0 +1,114 @@
+<form clrForm [formGroup]="contactForm" class="form_align" (ngSubmit)="onSubmit()">
+  <div class="col">
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-input-container>
+          <label for="fname">First name:</label>
+          <input type="text" clrInput placeholder="Enter First name" formControlName="firstName">
+          <clr-control-error
+            *clrIfError="(contactForm.get('firstName').touched) && contactForm.get('firstName').errors?.pattern">
+            This field is required!</clr-control-error>
+        </clr-input-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-input-container>
+          <label for="mname">Middle name:</label>
+          <input type="text" clrInput placeholder="Enter Middle name" formControlName="middleName">
+          <clr-control-error
+            *clrIfError="(contactForm.get('middleName').invalid) && contactForm.get('middleName').errors?.pattern">
+            This field is required!</clr-control-error>
+        </clr-input-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-input-container>
+          <label for="lname">Last name:</label>
+          <input type="text" clrInput placeholder="Enter Last name" formControlName="lastName">
+          <clr-control-error
+            *clrIfError="(contactForm.get('lastName').invalid) && contactForm.get('lastName').errors?.pattern">
+            This field is required!</clr-control-error>
+        </clr-input-container>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-radio-container clrInline>
+          <label>Gender:</label>
+          <clr-radio-wrapper>
+            <input type="radio" clrRadio name="gender" value="Male" formControlName="gender" />
+            <label>Male</label>
+          </clr-radio-wrapper>
+          <clr-radio-wrapper>
+            <input type="radio" clrRadio name="gender" value="Female" formControlName="gender" />
+            <label>Female</label>
+          </clr-radio-wrapper>
+          <clr-control-error>This field is required!</clr-control-error>
+        </clr-radio-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-input-container>
+          <label for="phone">Phone number:</label>
+          <input type="tel" clrInput placeholder="Enter Number" formControlName="phone">
+          <clr-control-error
+            *clrIfError="(contactForm.get('phone').invalid) && contactForm.get('phone').errors?.pattern">
+            This field is required!</clr-control-error>
+        </clr-input-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-input-container>
+          <label class="control-label" for="email">Email:</label>
+          <input type="text" clrInput placeholder="Enter Email" formControlName="emailAddress">
+          <clr-control-error
+            *clrIfError="(contactForm.get('emailAddress').invalid) && contactForm.get('emailAddress').errors?.pattern">
+            Please Enter emailAddress</clr-control-error>
+        </clr-input-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-radio-container clrInline>
+          <label>Matirial Status:</label>
+          <clr-radio-wrapper>
+            <input type="radio" clrRadio value="Single" formControlName="matrialStatus" />
+            <label>Single</label>
+          </clr-radio-wrapper>
+          <clr-radio-wrapper>
+            <input type="radio" clrRadio value="Married" formControlName="matrialStatus" />
+            <label>Married</label>
+          </clr-radio-wrapper>
+          <clr-control-error>This field is required!</clr-control-error>
+        </clr-radio-container>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <clr-date-container>
+          <label>Date</label>
+          <input type="date" clrDate formControlName="date" />
+        </clr-date-container>
+      </div>
+    </div>
+
+    <div style="float: left;margin-left: 1em;">
+      <button type="submit" class="btn btn-dark" [disabled]="contactForm.invalid">Submit</button>
+      &nbsp; <button type="submit" class="btn btn-dark" (click)="onReset()"
+        [disabled]="!contactForm.dirty">Reset</button>
+    </div>
+  </div>
+</form>
