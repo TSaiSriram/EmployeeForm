@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SubmitDocsComponent } from './components/submit-docs/submit-docs.component';
+import { SendMailComponent } from './components/send-mail/send-mail.component';
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'submit', component: SubmitDocsComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: SubmitDocsComponent },
+  { path: 'mail', component: SendMailComponent }
 ];
 
 @NgModule({

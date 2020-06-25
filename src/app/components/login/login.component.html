@@ -1,4 +1,9 @@
-<div class="align_center">
-  <button>Sign with Auth</button>
-
+<div id="signup" *ngIf="!validateToken">
+  <button class="loginBtn loginBtn--google" (click)="Login()" *ngIf="!token">
+    Login with Google
+  </button>
+</div>
+<div *ngIf="validateToken">
+  <button style="margin-left: 90em;" (click)="Logout()" *ngIf="token">Logout</button>
+  <app-submit-docs [user]=userData [token]=acces_token></app-submit-docs>
 </div>

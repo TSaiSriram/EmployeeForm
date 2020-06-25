@@ -8,16 +8,19 @@ import { SubmitDocsComponent } from './components/submit-docs/submit-docs.compon
 import { LoginComponent } from './components/login/login.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OAuthModule } from "angular-oauth2-oidc";
+import { SendMailComponent } from './components/send-mail/send-mail.component';
 @NgModule({
 
   declarations: [
     AppComponent,
     SubmitDocsComponent,
-    LoginComponent
+    LoginComponent,
+    SendMailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, ReactiveFormsModule, HttpClientModule, FormsModule, ClarityModule, BrowserAnimationsModule
+    AppRoutingModule, ReactiveFormsModule, HttpClientModule, FormsModule, ClarityModule, BrowserAnimationsModule, OAuthModule.forRoot()
   ],
 
   providers: [],

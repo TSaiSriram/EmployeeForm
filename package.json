@@ -20,13 +20,15 @@
     "@angular/platform-browser-dynamic": "~9.1.11",
     "@angular/router": "~9.1.11",
     "@clr/angular": "^2.4.4",
+    "@clr/icons": "2.4.4",
+    "@clr/ui": "2.4.4",
+    "@webcomponents/custom-elements": "^1.0.0",
+    "angular-oauth2-oidc": "^9.2.2",
+    "angular-oauth2-oidc-jwks": "^9.0.0",
     "cors": "^2.8.5",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
-    "@clr/ui": "2.4.4",
-    "@clr/icons": "2.4.4",
-    "@webcomponents/custom-elements": "^1.0.0"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.9",
